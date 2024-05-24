@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/Montserrat/Montserrat-Bold.ttf);
+  font-weight: 600;
+}
+
+/* ========================== */
+/* ========-global-========== */
+/* ========================== */
+.section-container {
+  padding: 0px 230px;
+}
+.btn {
+  box-sizing: border-box;
+  border: none;
+  width: auto;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15),
+    0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14398),
+    0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.13793),
+    0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.12711),
+    0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.10451),
+    0px 30px 30px -3.75px rgba(0, 0, 0, 0.05);
+  background-color: #ff8a08;
+  overflow: visible;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10;
+  color: white;
+  border-radius: 8px;
+}
+.btn:hover {
+  color: #ff8a08;
+  border: 3px solid #ff8a08;
+  transition: all 0.2s ease;
+  background-color: rgba(33, 33, 33, 0);
+}
+.btn-outline {
+  background-color: rgba(33, 33, 33, 0);
+  color: #ff8a08;
+
+  border: 3px solid #ff8a08;
+}
+.btn-outline:hover {
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+  background-color: #ff8a08;
+}
+/* ========================== */
+/* ========-courses-========== */
+/* ========================== */
+.course {
+  position: relative;
+}
+.course .img-background {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+.course .img-background img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
+}
+.course .course-container {
+  display: grid;
+  position: relative;
+  padding: 20px 0px;
+  place-items: center;
+  min-height: calc(100vh - 70px);
+}
+.course .content {
+  box-sizing: border-box;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 35px;
+  background-color: rgba(250, 250, 250, 0.94);
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 30px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.course .content h2 {
+  white-space: pre;
+  overflow: visible;
+  font-weight: 700;
+  color: #333333;
+  font-size: 50px;
+  letter-spacing: -2px;
+  line-height: 1.2;
+}
+.course .content h4 {
+  width: auto;
+  height: auto;
+  white-space: pre;
+  font-weight: 600;
+  color: #1f1f1f;
+  font-size: 20px;
+  letter-spacing: -0.1px;
+  line-height: 28px;
+}
+
+.course .infromation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 432px;
+}
+.course .content p {
+  margin: 8px 0px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  font-style: normal;
+  color: #373a3c;
+  letter-spacing: 0em;
+}
+
+.course .btn-container {
+  display: flex;
+  align-items: center;
+  /* margin-top: 10px; */
+  gap: 15px;
+  align-content: center;
+}
+.course .btn-container span {
+  font-weight: 700;
+  font-style: normal;
+  color: #333333;
+  font-size: 28px;
+  letter-spacing: 0em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ========================== */
+/* ========-offers-========== */
+/* ========================== */
+.offers {
+  padding-top: 30px;
+}
+.offer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-right: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.offer-container .img-container {
+  height: 300px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.offer-container .img-container img {
+  background-size: contain;
+  height: fit-content;
+  width: 100%;
+}
+
+.offer-container h2 {
+  font-weight: 700;
+  font-style: normal;
+  color: #333333;
+  max-width: 400px;
+  font-size: 40px;
+  letter-spacing: -2px;
+  line-height: 1.2;
+  padding-bottom: 30px;
+}
+.offer-container p {
+  width: 483px;
+  height: auto;
+
+  word-wrap: break-word;
+  word-break: break-word;
+
+  font-weight: 500;
+  font-style: normal;
+  color: #888888;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  line-height: 1.5;
+}
+.offer-content {
+  display: flex;
+  justify-content: space-between;
+}
+.offers hr {
+  border-top: solid 1px #525252;
+}
+
+.offer-container .offer-btn-side {
+  display: flex;
+  align-items: flex-end;
+}
+.offer-container .btn-container .btn {
+  font-size: 14px;
+}
+.offer-container .btn-container span {
+  font-size: 24px;
+}
