@@ -81,7 +81,7 @@
   padding-left: 50px;
 }
 .course .img-main {
-  width: 50%;
+  width: 40%;
   padding: 0px 10px;
 }
 
@@ -97,7 +97,9 @@
   align-items: center;
   padding-bottom: 10px;
 }
-
+.course .course-content {
+  width: 100%;
+}
 .course .text p {
   max-width: 65%;
   font-weight: 300;
