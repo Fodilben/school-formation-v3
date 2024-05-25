@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (userEmail && userComment) {
       // Ensure both email and comment are provided
-      fetch("http://localhost/school-formation-v3/php/comments.php", {
+      fetch("http://localhost/school-formation-v3/php/com.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

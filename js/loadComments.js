@@ -4,7 +4,7 @@ const commentsContainer = document.getElementById("comments-area");
 // Function to retrieve and display comments from the server
 function fetchComments() {
   // Fetch comments from the specified URL
-  fetch("http://localhost/school-formation-v3/php/comments.php")
+  fetch("http://localhost/school-formation-v3/php/com.php")
     .then((response) => response.json()) // Parse the response as JSON
     .then((data) => {
       if (data.status === "success") {
@@ -22,7 +22,7 @@ function fetchComments() {
             htmlContent += `
           <div class="comment">
               <div class="comment-head">
-                <img src="./assets/profile-icon-comments.png" alt="" />
+                <img src="./lib/profile-icon-comments.png" alt="" />
                 <h5>${item.email}</h5>
               </div>
               <p>${item.COMMENT}</p>

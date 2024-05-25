@@ -3,9 +3,9 @@ require('database.php');
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-function validateAndInsertComment($conn, $email, $comment) {
+function validateAndInsertComment($connection, $email, $comment) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $query = $conn->prepare("INSERT INTO comments (email, comment) VALUES (?, ?)");
+        $query = $connection->prepare("INSERT INTO comments (email, comment) VALUES (?, ?)");
         $query->bind_param("ss", $email, $comment);
         if ($query->execute()) {
             respondWithJson(["status" => "success", "message" => "Comment added successfully!"]);
@@ -18,9 +18,9 @@ function validateAndInsertComment($conn, $email, $comment) {
     }
 }
 
-function fetchComments($conn) {
+function fetchComments($connection) {
     $response = [];
-    $commentsQuery = $conn->query("SELECT * FROM comments");
+    $commentsQuery = $connection->query("SELECT * FROM comments");
     if ($commentsQuery->num_rows > 0) {
         while ($comment = $commentsQuery->fetch_assoc()) {
             $response[] = $comment;
@@ -39,10 +39,10 @@ function respondWithJson($data) {
 if ($requestMethod === 'POST') {
     $emailInput = $_POST['email'];
     $commentInput = $_POST['comment'];
-    validateAndInsertComment($conn, $emailInput, $commentInput);
+    validateAndInsertComment($connection, $emailInput, $commentInput);
 } elseif ($requestMethod === 'GET') {
-    fetchComments($conn);
+    fetchComments($connection);
 }
 
-$conn->close();
+$connection->close();
 ?>
