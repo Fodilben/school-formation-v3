@@ -1,33 +1,47 @@
 <?php
-include('database.php');
+require('database.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $comment = $_POST['comment'];
-    
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+function validateAndInsertComment($conn, $email, $comment) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $stmt = $conn->prepare("INSERT INTO comments (email, comment) VALUES (?, ?)");
-        $stmt->bind_param("ss", $email, $comment);
-        if ($stmt->execute()) {
-            echo json_encode(["status" => "success", "message" => "Comment added successfully!"]);
+        $query = $conn->prepare("INSERT INTO comments (email, comment) VALUES (?, ?)");
+        $query->bind_param("ss", $email, $comment);
+        if ($query->execute()) {
+            respondWithJson(["status" => "success", "message" => "Comment added successfully!"]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Error adding comment: " . $stmt->error]);
+            respondWithJson(["status" => "error", "message" => "Error adding comment: " . $query->error]);
         }
-        $stmt->close();
+        $query->close();
     } else {
-        echo json_encode(["status" => "error", "message" => "Invalid email format!"]);
+        respondWithJson(["status" => "error", "message" => "Invalid email format!"]);
     }
-} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $result = $conn->query("SELECT * FROM comments");
-    $comments = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $comments[] = $row;
+}
+
+function fetchComments($conn) {
+    $response = [];
+    $commentsQuery = $conn->query("SELECT * FROM comments");
+    if ($commentsQuery->num_rows > 0) {
+        while ($comment = $commentsQuery->fetch_assoc()) {
+            $response[] = $comment;
         }
-        echo json_encode(["status" => "success", "comments" => $comments]);
+        respondWithJson(["status" => "success", "comments" => $response]);
     } else {
-        echo json_encode(["status" => "success", "comments" => "No comments found!"]);
+        respondWithJson(["status" => "success", "comments" => "No comments found!"]);
     }
+}
+
+function respondWithJson($data) {
+    header('Content-Type: application/json');
+    echo json_encode($data);
+}
+
+if ($requestMethod === 'POST') {
+    $emailInput = $_POST['email'];
+    $commentInput = $_POST['comment'];
+    validateAndInsertComment($conn, $emailInput, $commentInput);
+} elseif ($requestMethod === 'GET') {
+    fetchComments($conn);
 }
 
 $conn->close();

@@ -1,40 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var commentForm = document.getElementById("commentForm");
+  var feedbackForm = document.getElementById("comForm");
 
-  // Event listener for the comment form submission
-  commentForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+  // Listener for form submission
+  feedbackForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default submission behavior
 
-    var email = document.getElementById("email").value;
-    var comment = document.getElementById("comment").value;
+    var userEmail = document.getElementById("email").value;
+    var userComment = document.getElementById("comment").value;
 
-    if (email && comment) {
-      // Check if both email and comment are provided
-      fetch("http://localhost/school-formation-v2/php/comments.php", {
+    if (userEmail && userComment) {
+      // Ensure both email and comment are provided
+      fetch("http://localhost/school-formation-v3/php/comments.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body:
-          // Encode the email and comment to be safely included in the URL
+          // Encode email and comment for URL safety
           "email=" +
-          encodeURIComponent(email) +
+          encodeURIComponent(userEmail) +
           "&comment=" +
-          encodeURIComponent(comment),
+          encodeURIComponent(userComment),
       })
-        .then(function (response) {
-          return response.json(); // Parse the response as JSON
+        .then(function (res) {
+          return res.json(); // Parse response as JSON
         })
-        .then(function (data) {
-          if (data.status === "success") {
-            console.log(data.message); // Log success message
-            window.location.reload(); // Reload the page to show the new comment
+        .then(function (result) {
+          if (result.status === "success") {
+            console.log(result.message); // Log success message
+            window.location.reload(); // Refresh to display new comment
           } else {
-            console.error(data.message); // Log error message if submission failed
+            console.error(result.message); // Log error message on failure
           }
         })
-        .catch(function (error) {
-          console.error("Error submitting comment:", error); // Log any errors that occur during fetch
+        .catch(function (err) {
+          console.error("Error submitting feedback:", err); // Log any fetch errors
         });
     }
   });
