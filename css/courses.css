@@ -216,6 +216,9 @@
 .offer-content {
   /* padding-left: 30px; */
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .offer-content > div {
   display: flex;
