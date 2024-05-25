@@ -19,17 +19,15 @@ function loadComments() {
 
           // Loop through each comment and build the HTML
           for (var i = 0; i < comments.length; i++) {
-            html += `<div>
-            <span>
-              <div>
-                <img src="assets/profile-icon-comments.png" alt="" />
+            html += `
+          <div class="comment">
+              <div class="comment-head">
+                <img src="./assets/profile-icon-comments.png" alt="" />
                 <h5>${comments[i].email}</h5>
               </div>
-              <p>
-              ${comments[i].COMMENT}
+              <p>${comments[i].COMMENT}
               </p>
-            </span>
-          </div>`;
+            </div>`;
           }
 
           // Set the built HTML to the comments container
