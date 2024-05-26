@@ -5,57 +5,86 @@
 }
 * {
   margin: 0;
-  font-family: Montserrat;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --background: #fffdf5;
+  --h3: #f5c753;
+}
+body {
+  background-color: var(--background);
 }
 button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-:root {
-  --orange: #ff8a08;
-}
 
 h3 {
   font-family: "Montserrat", sans-serif;
-  color: #481e14;
+  color: #f5c753;
 }
 .header {
-  background-color: black;
+  background-color: var(--background);
   width: 100%;
   height: 70px;
   display: grid;
   justify-content: center;
   align-items: center;
   position: relative;
+  box-shadow: 2px 3px 15px 2px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  border-radius: 0px 0px 10px 10px;
 }
 .header-h1 {
-  color: #fff;
-  font-family: monospace;
+  color: #000000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 40px;
 }
 .header .profile-icon {
-  height: 35px;
-  width: 35px;
+  width: 78px;
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5c753;
+  align-content: center;
   position: absolute;
-  top: 20px;
-  left: 30px;
 }
 .header .profile-icon img {
-  height: 25px;
-  width: 25px;
+  height: 29px;
+  width: 34px;
 }
 
 /* ========================== */
 /* =========-Hero-=========== */
 /* ========================== */
 
+.full-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .hero {
   height: calc(100vh - 70px);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   overflow: hidden;
-  padding: 0 100px;
+}
+.hero .hero-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.hero img {
+  width: 80%;
 }
 
 .hero .hero-content {
@@ -64,26 +93,29 @@ h3 {
   align-items: start;
   justify-content: start;
   color: black;
+  width: 100%;
   height: 100%;
   gap: 50px;
   border-radius: 8px;
   padding: 130px 0;
-  padding-left: 20px;
+  padding-left: 120px;
+  padding-right: 120px;
 }
 .hero .hero-content h1 {
   margin-top: 110px;
-  width: 100%;
+  width: 70%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-word;
   font-weight: 600;
   font-family: "Roboto Mono", monospace;
   color: #333333;
-  font-size: 50px;
+  font-size: 64px;
   letter-spacing: -2.4px;
   line-height: 1.2;
   text-align: left;
 }
-.hero .hero-content span {
-  color: var(--orange);
-}
+
 .hero .hero-content .desc {
   font-weight: 500;
   font-family: "Inter", "Inter Placeholder", sans-serif;
@@ -93,6 +125,7 @@ h3 {
   line-height: 1.5;
   text-align: left;
   padding-right: 100px;
+  width: 70%;
 }
 
 .hero .hero-content .buttons {
@@ -111,7 +144,7 @@ h3 {
   justify-content: center;
   align-items: center;
   padding: 20px 18px 20px 18px;
-  background-color: #ff8a08;
+  background-color: #000000;
   align-content: center;
   gap: 15;
   border-radius: 8px;
@@ -127,40 +160,39 @@ h3 {
   background-color: rgb(253, 142, 45);
   box-shadow: outset #222 2px 2px;
 }
-.hero .hero-content .buttons .stats {
+.full-hero .stats {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  gap: 20px;
+  width: 100%;
+
+  height: 144px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 2px 3px 15px 2px rgba(0, 0, 0, 0.25);
+  background-color: #fff999;
+  align-content: center;
 }
-.hero .hero-content .buttons .stats .stat {
+.full-hero .stats .stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 12;
 }
-.hero .hero-content .buttons .stats .stat span {
+.full-hero .stats .stat h2 {
   font-weight: 700;
   font-family: "Inter", "Inter Placeholder", sans-serif;
   color: #000000;
   font-size: 36px;
-  letter-spacing: 0em;
   line-height: 1.2;
 }
-.hero .hero-content .buttons .stats .stat p {
+.full-hero .stats .stat p {
   font-family: "Inter", sans-serif;
   color: #616060;
-  font-size: 17px;
-  letter-spacing: 0em;
+  font-size: 21px;
   line-height: 1.2;
-}
-
-.hero .hero-img {
-  width: 100%;
-  overflow: hidden;
-}
-.hero img {
-  width: 120%;
 }
 
 /* ========================== */
@@ -211,71 +243,82 @@ h3 {
   width: 320px;
 }
 .main-section .formations .container .formation .image {
-  height: 180px;
+  height: 263px;
   overflow: hidden;
 }
 .main-section .formations .container .formation .image img {
-  width: 100%;
+  height: 100%;
 }
 .main-section .formations .container .formation .formation-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px;
   align-content: flex-start;
   gap: 10px;
-}
-.main-section .formation .formation-info h4 {
-  font-size: 22px;
-}
-.main-section .formation .formation-info p {
-  font-size: 16px;
 }
 .main-section .formation .formation-info .price {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
+  width: 100%;
 }
 .main-section .formation .formation-info .price span {
-  font-weight: 700;
-  font-family: "Inter", "Inter Placeholder", sans-serif;
-  color: #2d2f31;
-  font-size: 20px;
-  line-height: 32px;
+  font-weight: 500;
+  font-family: "Roboto", "Roboto Placeholder", sans-serif;
+  color: #5465fd;
+  font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px 6px 10px;
+  background-color: rgba(235, 238, 255, 0.84);
+  border-radius: 4px;
 }
-.main-section .formation .formation-info .price p {
-  text-decoration: line-through;
-  font-weight: 400;
-  font-family: "Inter", "Inter Placeholder", sans-serif;
-  color: #6a6f73;
-  font-size: 16px;
-  line-height: 14px;
+.main-section .formation .formation-info h4 {
+  font-size: 22px;
+
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: var(--token-b9c3c957-2c66-49c4-9732-fa196fddac20, #001122);
+  font-size: 19px;
+  letter-spacing: -0.5px;
+  text-align: left;
 }
 .main-section .formation .formation-info .btns {
+  width: 100%;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-section .formation .formation-info .btns div {
+  display: flex;
+  justify-content: start;
+  gap: 3px;
   align-items: center;
 }
-
+.main-section .formation .formation-info .btns div p {
+  font-weight: 700;
+  font-family: "Inter", "Inter Placeholder", sans-serif;
+  color: #ffc107;
+  font-size: 14px;
+  text-align: left;
+}
+.main-section .formation .formation-info .btns div img {
+  width: 17px;
+  height: 15px;
+}
 .start-btn {
-  color: var(--orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 31px;
-  padding: 15px;
-  box-shadow: 0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15),
-    0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14398),
-    0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.13793),
-    0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.12711),
-    0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.10451),
-    0px 30px 30px -3.75px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  background-color: #fff;
-  border: 2px solid var(--orange);
-  text-align: center;
   font-weight: 600;
+  font-family: "Inter", "Inter Placeholder", sans-serif;
+  color: #5e43f2;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+  border: none;
+  background-color: transparent;
 }
 .start-btn:hover {
   color: #f2f2f2;
@@ -298,49 +341,41 @@ h3 {
   flex-direction: column;
   gap: 80px;
 }
+
 .main-section .promotions .promotion {
-  width: 200px;
-  height: 170px;
-  border-radius: 24px;
-  overflow: hidden;
+  box-sizing: border-box;
+  height: 183px;
+  width: 317px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  padding: 20px;
-  padding-left: 25px;
-  box-shadow: 0px 1px 2px 0px rgba(107, 215, 245, 0.25),
-    4px 18px 35px 10px rgba(107, 215, 245, 0.25);
-  background: linear-gradient(117deg, #88dff7 0%, rgb(46, 180, 217) 129%);
-  gap: 6;
+  box-shadow: 2px 10px 15px 3px rgba(107, 215, 245, 0.25);
+  align-content: center;
+  gap: 42;
+  border-radius: 10px;
+  border: 7px solid #88dff7;
+  padding: 15px;
 }
-.main-section .promotions .promotion h4 {
-  text-wrap: wrap;
-  font-weight: 600;
-  font-style: normal;
-  font-family: "Inter", "Inter Placeholder", sans-serif;
-  color: #ffffff;
-  font-size: 25px;
-  letter-spacing: 0em;
-  line-height: 1.4;
-  width: 100%;
-}
+
 .main-section .promotions .promotion span {
-  height: auto;
-  width: 100%;
   font-weight: 800;
   color: #ffffff;
   font-size: 44px;
   line-height: 1.2;
   font-family: sans-serif;
+  padding: 10px;
+  background-color: #88dff7;
+  border-radius: 16px;
 }
 .main-section .promotions .promotion h5 {
-  font-weight: 600;
-  font-family: "Inter", "Inter Placeholder", sans-serif;
-  color: #ffffff;
+  font-weight: 500;
   font-size: 19px;
   line-height: 1.4;
   text-align: left;
+  width: 100%;
+  font-family: "Inter", "Inter Placeholder", sans-serif;
+  color: #54524f;
 }
 
 /* ========================== */
@@ -349,15 +384,16 @@ h3 {
 
 .comments-section {
   margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 150px;
   gap: 50px;
 }
 .comments-section .comment-form {
   min-width: 400px;
-  padding: 0 100px;
+  width: 100%;
 }
 .comments-section h3 {
   font-size: 42px;
@@ -377,72 +413,83 @@ h3 {
 .comments-section input,
 textarea {
   border: none;
-  background-color: #fff;
   outline: none;
-  width: 100%;
-
+  width: 96%;
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
-  align-content: center;
   align-items: center;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid #ff8a08;
+  padding: 8px;
+  background-color: rgba(153, 238, 255, 0);
+  border-radius: 4px;
+  border: 2px solid #000000;
 }
 .comments-section .send-btn {
-  height: 47px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #ff8c08;
-  align-content: center;
   border-radius: 10px;
-  border: 2px solid #ff8a08;
   color: #fff;
+  font-size: 16px;
   font-weight: 600;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  width: 100%;
+  height: 47px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5c753;
+  overflow: hidden;
+  padding: 0px;
+  border: none;
 }
 textarea {
   min-height: 180px;
 }
 
+/* =================================== */
+
 .comments-place {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  padding: 0 100px;
+
+  padding: 0 50px 0 0;
+  height: 100%;
 }
 #comments-area {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
 }
-#comments-area div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-#comments-area div img {
-  width: 50px;
-}
-#comments-area div span {
+#comments-area .comment {
   display: flex;
   flex-direction: column;
-  border: 1.3px solid #222;
-  padding: 20px;
-  border-radius: 8px;
+  justify-content: start;
+  align-items: start;
+  border-bottom: 2px solid #222;
+  padding: 10px;
+  gap: 8px;
+  padding-bottom: 15px;
+  margin-top: 30px;
+}
+#comments-area .comment-head img {
+  width: 40px;
+}
+#comments-area .comment .comment-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
   gap: 20px;
   width: 100%;
 }
-#comments-area div span div {
-  display: flex;
-  justify-content: start;
-}
-#comments-area div span p {
-  padding-left: 60px;
+
+#comments-area .comment p {
+  padding-left: 50px;
+
+  font-weight: 400;
+  font-family: "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif, "System Default", sans-serif;
+  color: #171717;
+  font-size: 18px;
 }
 
 /* ========================== */
@@ -488,6 +535,10 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
 }
 .personel-info .profile-image h3 {
   color: var(--orange);
